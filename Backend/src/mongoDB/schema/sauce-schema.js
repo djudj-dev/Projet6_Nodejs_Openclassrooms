@@ -3,47 +3,43 @@ import { Schema } from "mongoose";
 const SauceSchema = new Schema ({
   userId: {
     type: String,
-    require: true,
+    required: true,
   },
   name: {
     type: String,
-    require: true
+    required: true
   },
   manufacturer: {
     type: String,
-    require: true
   },
   description: {
     type: String,
-    require: true
   },
   mainPepper: {
     type: String,
-    require: true
   },
   imageUrl: {
     type: String,
-    require: true
+    required: true
   },
   heat: {
     type: Number,
-    require: true
   },
   likes: {
     type: Number,
-    require: true
+    required: true
   },
   dislikes: {
     type: Number,
-    require: true
+    required: true
   },
   usersLiked: {
     type: [String],
-    require: true
+    required: true
   },
   usersDisliked: {
     type: [String],
-    require: true
+    required: true
   }
 });
 

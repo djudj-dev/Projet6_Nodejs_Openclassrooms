@@ -11,9 +11,3 @@ export const regexVerificator = (typeGuardObject, ObjectToVerify) => (
     return true;
   })
 )
-
-export const checkTypeAndFormat = (typeGuardObject, ObjectToVerify) => {
-  isTypegood = typeVerificator(typeGuardObject, ObjectToVerify);
-  isFormatGood = regexVerificator(typeGuardObject, ObjectToVerify)
-  return (isFormatGood && isTypegood);
-}
