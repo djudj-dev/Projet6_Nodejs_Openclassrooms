@@ -1,4 +1,4 @@
-export const userType = {
+export const userTypeSchema = {
   email: {
     type: 'string',
     regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/

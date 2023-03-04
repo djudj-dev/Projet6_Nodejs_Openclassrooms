@@ -1,4 +1,4 @@
-import { getSauceController, deleteSauceController } from "./controller.js"
+import { getSauceController, deleteSauceController, putSauceController } from "./controller.js"
 
 export const getSauceRooter = { 
   type: 'get',
@@ -10,4 +10,10 @@ export const deleteSauceRooter = {
   type: 'delete',
   route: '/api/sauces/:id', 
   controller : deleteSauceController
+}
+
+export const putSauceRooter = {
+  type: 'put',
+  route: '/api/sauces/:id', 
+  controller : putSauceController
 }

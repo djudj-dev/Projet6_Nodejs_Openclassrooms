@@ -7,11 +7,10 @@ const createModels = (connection, modelsClosure,{...schemaObjects}) => {
   
   Object.entries(schemaObjects).forEach(([,{name, schema}]) => {
     let newModel= {};
-    console.log('création de la collection :', name);
-
+    
     try {
       newModel['model'] = connection.model(name, schema);
-      console.log('Reussi');
+      console.log('création de la collection :', name);
     } catch {
       console.error('Erreur dans la création de collection : ', error)
     }

@@ -11,12 +11,15 @@ const SauceSchema = new Schema ({
   },
   manufacturer: {
     type: String,
+    required: true
   },
   description: {
     type: String,
+    required: true
   },
   mainPepper: {
     type: String,
+    required: true
   },
   imageUrl: {
     type: String,
@@ -24,6 +27,7 @@ const SauceSchema = new Schema ({
   },
   heat: {
     type: Number,
+    required: true
   },
   likes: {
     type: Number,
