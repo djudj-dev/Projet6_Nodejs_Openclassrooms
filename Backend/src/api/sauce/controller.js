@@ -1,59 +1,64 @@
-import { mongoModels } from './../../mongoDB/index.js'
+import { mongoModels } from './../../mongoDB/index.js';
 import { typeVerificator } from '../../utils/object-tools/object-verifier.js';
-import { sauceTypeSchema } from '../../utils/object-tools/type-checker/index.js';
+import { idTypeSchema } from '../../utils/object-tools/type-checker/index.js';
+import { updateSauceFormat } from '../../utils/object-tools/update-sauce.js';
+import { logString } from '../../utils/string.js';
 
-const { Sauce: { findOne, deleteOne, updateOne }} = mongoModels
-const { ENV_URL, PUBLIC_IMAGES } = process.env;
+const {
+  api_bad_request,
+  api_not_found,
+  deleted_succes,
+  put_success
+} = logString;
+const { Sauce: { findOne, deleteOne, updateOne }} = mongoModels;
 
 export const getSauceController = async (req, res) => {
+  const isParamsValid = typeVerificator(idTypeSchema, req.params);
   const { params: { id }} = req;
-  if (id) {
-    const { status, data } = await findOne({_id: id})
+
+  if (isParamsValid && id) {
+    const { status, data } = await findOne({_id: id});
+
     if (status) {
+
       return res.send(data);
     }
   }
-  return res.status(404).send('not fount');
+
+  return res.status(404).send(api_not_found);
 }
 
 export const deleteSauceController = async (req, res) => {
+  const isParamsValid = typeVerificator(idTypeSchema, req.params);
   const { params: { id }} = req;
-  if (id) {
-    const { status, data } = await deleteOne({_id: id})
+
+  if (isParamsValid && id) {
+    const { status } = await deleteOne({_id: id});
+
     if (status) {
-      return res.send({message: 'deleted'});
+
+      return res.send({message: deleted_succes});
     }
   }
-  return res.status(404).send('not fount');
+
+  return res.status(404).send(api_not_found);
 }
 
 export const putSauceController = async (req, res) => {
+  const isParamsValid = typeVerificator(idTypeSchema, req.params);
   const {_body , params: { id }, body } = req;
-  let updateSauceObj;
-  if (_body){
-    updateSauceObj = body;
-  } else if (body.imgName){
-    const { imgName, sauce } = body;
-    const incomingData = JSON.parse(sauce);
-    updateSauceObj = typeVerificator(sauceTypeSchema, incomingData)
-      ? {
-        name: incomingData.name,
-        manufacturer: incomingData.manufacturer,
-        description: incomingData.description,
-        heat: incomingData.heat,
-        userId: incomingData.userId,
-        mainPepper: incomingData.mainPepper,
-        imageUrl: `${ENV_URL + PUBLIC_IMAGES}/${imgName}`
-      } 
-      : null;
-  }
-  if (updateSauceObj && id) {
-    const { status, data } = await updateOne({_id: id},updateSauceObj);
-    if(status){
+  const updateSauceObj = _body 
+    ? body
+    : updateSauceFormat(body);
 
-      return res.send({message: `modifier avec succes le contenue : ${data.id}`});
+  if (isParamsValid && updateSauceObj) {
+    const { status, data } = await updateOne({_id: id}, updateSauceObj);
+
+    if (status) {
+
+      return res.send({message: put_success + data.id});
     }
   }
 
-  return res.status(400).send('bad request');
+  return res.status(400).send(api_bad_request);
 }

@@ -1,4 +1,4 @@
-import { getSaucesController, postSauceController } from "./controller.js"
+import { getSaucesController, postSauceController } from './controller.js';
 
 export const getSaucesRooter = { 
   type: 'get',

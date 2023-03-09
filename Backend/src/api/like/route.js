@@ -1,4 +1,4 @@
-import { likeSauceController } from "./controller.js"
+import { likeSauceController } from './controller.js';
 
 export const likeSauceRooter = {
   type: 'post',

@@ -1,15 +1,31 @@
-export const modelsClosure = {
+import { logString } from './string.js';
+
+const {
+  models_closures_success_create,
+  models_closures_error_create,
+  models_closures_success_findOne,
+  models_closures_error_finOne,
+  models_closures_success_findAll,
+  models_closures_error_finAll,
+  models_closures_success_delete,
+  models_closures_error_delete,
+  models_closures_success_updateOne,
+  models_closures_error_updateOne
+} = logString;
+
+export const modelsClosures = {
   create: (mongoModel, modelName) => (
     async (createObject) => {
       let requestReturn = {};
+
       try {
         requestReturn.data = await new mongoModel(createObject).save();
         requestReturn.status = true;
-        console.log(`creation d'un(e) ${modelName}`);
+        console.log(models_closures_success_create, modelName);
         console.log(requestReturn.data);
      } catch (error) {
         requestReturn.status = false;
-        console.error(`Erreur dans la création d'un(e) ${modelName} | Error => `, error)
+        console.error(models_closures_error_create, error);
      }
   
      return requestReturn;
@@ -18,14 +34,15 @@ export const modelsClosure = {
   findOne: (mongoModel, modelName) => (
     async (findOneObject) => {
       let requestReturn = {};
+
       try {
         requestReturn.data = await mongoModel.findOne(findOneObject);
         requestReturn.status = true;
-        console.log(`requette ${modelName}`);
+        console.log(models_closures_success_findOne, modelName);
         console.log(requestReturn.data);
      } catch (error) {
         requestReturn.status = false;
-        console.error(`Erreur dans la requette d'un(e) ${modelName} | Error => `, error)
+        console.error(models_closures_error_finOne, error);
      }
   
      return requestReturn;
@@ -34,14 +51,15 @@ export const modelsClosure = {
   findAll: (mongoModel, modelName) => (
     async () => {
       let requestReturn = {};
+
       try {
         requestReturn.data = await mongoModel.find({});
         requestReturn.status = true;
-        console.log(`requette global ${modelName}`);
+        console.log(models_closures_success_findAll, modelName);
         console.log(requestReturn.data);
      } catch (error) {
         requestReturn.status = false;
-        console.error(`Erreur dans la requette global de la collection ${modelName} | Error => `, error)
+        console.error(models_closures_error_finAll, error);
      }
   
      return requestReturn;
@@ -50,14 +68,15 @@ export const modelsClosure = {
   deleteOne: (mongoModel, modelName) => (
     async (deleteObject) => {
       let requestReturn = {};
+
       try {
         requestReturn.data = await mongoModel.deleteOne(deleteObject);
         requestReturn.status = true;
-        console.log(`supression d'un(e) ${modelName}`);
+        console.log(models_closures_success_delete, modelName);
         console.log(requestReturn.data);
      } catch (error) {
         requestReturn.status = false;
-        console.error(`Erreur dans la supression d'un(e) ${modelName} | Error => `, error)
+        console.error(models_closures_error_delete, error);
      }
   
      return requestReturn;
@@ -66,14 +85,15 @@ export const modelsClosure = {
   updateOne: (mongoModel, modelName) => (
     async (id, updateOneObject) => {
       let requestReturn = {};
+
       try {
         requestReturn.data = await mongoModel.updateOne(id, updateOneObject);
         requestReturn.status = true;
-        console.log(`modifiaction d'un(e) ${modelName}`);
+        console.log(models_closures_success_updateOne, modelName);
         console.log(requestReturn.data);
      } catch (error) {
         requestReturn.status = false;
-        console.error(`Erreur dans la modification d'un(e) ${modelName} | Error => `, error)
+        console.error(models_closures_error_updateOne, error);
      }
   
      return requestReturn;

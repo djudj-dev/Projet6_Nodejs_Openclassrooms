@@ -1,11 +1,15 @@
 import fs from 'node:fs';
+import { logString, consoleColors } from './string.js';
 
+const { public_path_create, public_path_allreadyExist } = logString;
 const { env: { PWD , ...env } } = process;
 const publicPathRegex = /^PUBLIC_/;
 
 const getPublicPaths = (regex, envVariable) => {
   let publicPaths = {};
+
   for (let key in envVariable) {
+
     if (regex.test(key)) {
       publicPaths[key.split('_')[1]] = envVariable[key];
     }
@@ -15,16 +19,18 @@ const getPublicPaths = (regex, envVariable) => {
 }
 
 const createPublicPath = (projectRoot, publicPathObj) => {
+
   Object.entries(publicPathObj).forEach(([key, value]) => {
+
     if (!fs.existsSync(projectRoot+value)) {
-      fs.mkdirSync(projectRoot+value)
-      console.log(`${key} : ${value} créé`);
+      fs.mkdirSync(projectRoot+value);
+      console.log(consoleColors.FgGreen,`${key} : ${value} `+ public_path_create);
     } else {
-      console.log(`${key} : ${value} deja existant`);
+      console.log(consoleColors.FgCyan,`${key} : ${value} `+ public_path_allreadyExist);
     };
   })
 
   return publicPathObj;
 }
 
-export const publicPaths = createPublicPath(PWD, getPublicPaths(publicPathRegex, env))
+export const publicPaths = createPublicPath(PWD, getPublicPaths(publicPathRegex, env));

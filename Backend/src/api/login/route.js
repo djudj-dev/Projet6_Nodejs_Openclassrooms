@@ -1,4 +1,4 @@
-import { loginController } from './controller.js'
+import { loginController } from './controller.js';
 
 export const loginRooter = {
   type: 'post',

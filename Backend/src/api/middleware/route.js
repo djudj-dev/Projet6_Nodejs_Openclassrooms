@@ -1,5 +1,5 @@
-import { authMiddleware } from './auth-middleware.js'
-import { uploadImg } from './multer.js'
+import { authMiddleware } from './auth-middleware.js';
+import { uploadImg } from './multer.js';
 
 export const authRooter = { 
   type: 'all',

@@ -1,4 +1,4 @@
-import { signupController } from './controller.js'
+import { signupController } from './controller.js';
 
 export const signupRooter = {
   type: 'post',

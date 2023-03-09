@@ -16,5 +16,8 @@ export const sauceTypeSchema = {
   }, 
   mainPepper: {
     type: 'string'
-  } 
+  },
+  imgUrl: {
+    type: 'string'
+  }
 }

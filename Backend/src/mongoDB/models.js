@@ -1,8 +1,11 @@
-import { mongoConnection } from "./connection.js";
-import { modelsClosure } from "../utils/models-closure.js";
-import  * as schemas from './schema/index.js';
+import { mongoConnection } from './connection.js';
+import { modelsClosures } from '../utils/models-closure.js';
+import { logString , consoleColors } from '../utils/string.js';
+import * as schemas from './schema/index.js';
 
-const createModels = (connection, modelsClosure,{...schemaObjects}) => {
+const { db_model_create, db_error_model_creation } = logString;
+
+const createModels = (connection, modelsClosures,{...schemaObjects}) => {
   const modelsObject= {};
   
   Object.entries(schemaObjects).forEach(([,{name, schema}]) => {
@@ -10,12 +13,12 @@ const createModels = (connection, modelsClosure,{...schemaObjects}) => {
     
     try {
       newModel['model'] = connection.model(name, schema);
-      console.log('création de la collection :', name);
+      console.log(consoleColors.FgGreen, db_model_create, name);
     } catch {
-      console.error('Erreur dans la création de collection : ', error)
+      console.error(db_error_model_creation, error);
     }
 
-    Object.entries(modelsClosure).forEach(([key, value]) => (
+    Object.entries(modelsClosures).forEach(([key, value]) => (
       newModel[key] = value(newModel.model, name)
     ));
 
@@ -25,4 +28,4 @@ const createModels = (connection, modelsClosure,{...schemaObjects}) => {
   return modelsObject;
 };
 
-export const mongoModels = createModels(mongoConnection, modelsClosure, schemas);
+export const mongoModels = createModels(mongoConnection, modelsClosures, schemas);

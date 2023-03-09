@@ -5,5 +5,4 @@ export const likeTypeSchema = {
   userId: {
     type: 'string'
   }, 
-
 }
