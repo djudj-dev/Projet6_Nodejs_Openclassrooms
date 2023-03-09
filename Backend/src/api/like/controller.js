@@ -8,14 +8,14 @@ const { api_not_found , liked_success } = logString;
 const { Sauce: { findOne, updateOne }} = mongoModels;
 
 export const likeSauceController = async (req, res) => {
-  const isDataGood = typeVerificator(likeTypeSchema, body);
   const { params: { id }, body } = req;
+  const isDataGood = typeVerificator(likeTypeSchema, body);
 
   if (id && isDataGood) {
     const { status, data } = await findOne({_id: id});
     const { like, userId } = body;
 
-    if (status & data) {
+    if (status && data) {
       const UpdateData = likeReducer(userId, like, data);
       const request = await updateOne({_id: id}, UpdateData);
 

@@ -7,9 +7,10 @@ import { logString } from '../../utils/string.js';
 const {
   api_bad_request,
   auth_invalid_credential,
-  signup_valid
+  signup_valid,
+  signup_allready_exist
 } = logString;
-const { User } = mongoModels;
+const { User:{ create, findOne} } = mongoModels;
 
 export const signupController = async (req, res) => {
   const isDataGood = typeVerificator(userTypeSchema, req.body);
@@ -18,13 +19,17 @@ export const signupController = async (req, res) => {
   const createUserData = {email: email, password: await hashManager.hash(password)};
  
   if (isDataGood && isFormatDataGood) {
+    const {status, data} = await findOne({ email: email });
     
-    const createUser = await User.create(createUserData);
-    
-    if (createUser.status) {
+    if (status && !data){
+      const createUser = await create(createUserData);
 
-      return res.send(signup_valid, email);
+      if (createUser.status) {
+
+        return res.send(signup_valid + email);
+      }
     }
+    return res.status(409).send(signup_allready_exist);
   }
   const errorMessage = (isDataGood && !isFormatDataGood) ? auth_invalid_credential : api_bad_request;
 

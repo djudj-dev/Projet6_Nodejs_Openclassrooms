@@ -1,4 +1,7 @@
 export const sauceTypeSchema = {
+  userId: {
+    type: 'string'
+  },
   name: {
     type: 'string'
   }, 
@@ -10,14 +13,8 @@ export const sauceTypeSchema = {
   }, 
   heat: {
     type: 'number'
-  },  
-  userId: {
-    type: 'string'
-  }, 
-  mainPepper: {
-    type: 'string'
   },
-  imgUrl: {
+  mainPepper: {
     type: 'string'
   }
 }

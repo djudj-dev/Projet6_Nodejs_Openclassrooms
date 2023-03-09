@@ -7,8 +7,7 @@ ______________________________________
 | Api Success launch in : ${second} sec  
 |_____________________________________
 
-`
-    ),
+`),
   api_bad_request: 'Bad request.',
   api_not_found: 'Not found.',
   api_unauthorized: 'Unauthorized request.',
@@ -47,6 +46,7 @@ ______________________________________
   login_failed: 'Login faillure of :',
 
   signup_valid: 'User created successfully : ',
+  signup_allready_exist: 'Email already use',
 
   deleted_succes: 'Successfully deleted',
 

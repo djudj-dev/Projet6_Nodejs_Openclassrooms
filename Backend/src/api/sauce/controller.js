@@ -5,6 +5,7 @@ import { updateSauceFormat } from '../../utils/object-tools/update-sauce.js';
 import { logString } from '../../utils/string.js';
 
 const {
+  api_unauthorized,
   api_bad_request,
   api_not_found,
   deleted_succes,
@@ -52,12 +53,18 @@ export const putSauceController = async (req, res) => {
     : updateSauceFormat(body);
 
   if (isParamsValid && updateSauceObj) {
-    const { status, data } = await updateOne({_id: id}, updateSauceObj);
+    const { data:{ userId }} = await findOne({_id: id});
 
-    if (status) {
+    if (userId === updateSauceObj.userId) {
+      const { status, data } = await updateOne({_id: id}, updateSauceObj);
 
-      return res.send({message: put_success + data.id});
+      if (status) {
+
+        return res.send({message: put_success + data.id});
+      }
     }
+
+    return res.status(403).send(api_unauthorized);
   }
 
   return res.status(400).send(api_bad_request);
