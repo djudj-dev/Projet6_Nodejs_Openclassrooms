@@ -1,5 +1,10 @@
 import { Schema } from 'mongoose';
 
+/**
+ * @file manage the User DB schema 
+ * @UserSchema will be used later by the @createModels function 
+**/
+
 const UserSchema = new Schema ({
   email: {
     type: String,

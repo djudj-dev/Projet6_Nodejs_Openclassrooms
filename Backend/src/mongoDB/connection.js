@@ -1,6 +1,12 @@
 import { createConnection } from 'mongoose';
 import { logString, consoleColors } from './../utils/string.js';
 
+/**
+ * @file manage DB Connection  
+ * @mongoConnection will be used later by all the function 
+ * that will need to use the db 
+**/
+
 const { db_connection_success, db_connection_error } = logString;
 
 const atlasConnectionCreator = () => {

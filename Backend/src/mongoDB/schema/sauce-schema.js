@@ -1,5 +1,10 @@
 import { Schema } from 'mongoose';
 
+/**
+ * @file manage the Sauce DB schema 
+ * @SauceSchema will be used later by the @createModels function 
+**/
+
 const SauceSchema = new Schema ({
   userId: {
     type: String,
