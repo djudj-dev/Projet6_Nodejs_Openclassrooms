@@ -1,27 +1,39 @@
 import { Router } from 'express';
-import { authRooter, multerPostRooter, multerPutRooter  } from './middleware/route.js';
-import { signupRooter } from './signup/route.js';
-import { loginRooter } from './login/route.js';
-import { getSauceRooter, deleteSauceRooter, putSauceRooter } from './sauce/route.js';
-import { getSaucesRooter, postSaucesRooter } from './sauces/route.js';
-import { likeSauceRooter } from './like/route.js';
+import { authRouter, multerPostRouter, multerPutRouter } from './middleware/route.js';
+import { signupRouter } from './signup/route.js';
+import { loginRouter } from './login/route.js';
+import { getSauceRouter, deleteSauceRouter, putSauceRouter } from './sauce/route.js';
+import { getSaucesRouter, postSaucesRouter } from './sauces/route.js';
+import { likeSauceRouter } from './like/route.js';
+
+/**
+ * @file Manage the router creation with all the routes object
+ * @routerImplement use all the middleware & endPoints for 
+ * implement the API router
+ * @param { router }; Need to be an Express Router
+ * @param { middlewares, endPoints }; 
+ * needs to be two arrays of objects with :
+ * - type
+ * - route
+ * - controller  
+**/
 
 const router = Router();
 const routerAPIObj = {
   middlewares: [
-    authRooter,
-    multerPostRooter,
-    multerPutRooter
+    authRouter,
+    multerPostRouter,
+    multerPutRouter
   ],
   endPoints: [
-    signupRooter,
-    loginRooter,
-    getSauceRooter,
-    deleteSauceRooter,
-    putSauceRooter,
-    getSaucesRooter,
-    likeSauceRooter,
-    postSaucesRooter
+    signupRouter,
+    loginRouter,
+    getSauceRouter,
+    deleteSauceRouter,
+    putSauceRouter,
+    getSaucesRouter,
+    likeSauceRouter,
+    postSaucesRouter
   ]
 };
 
@@ -35,6 +47,6 @@ const routerImplement = (router, { middlewares, endPoints }) => {
   ));
 
   return router;
-}
+};
 
 export const apiRouter = routerImplement(router, routerAPIObj);

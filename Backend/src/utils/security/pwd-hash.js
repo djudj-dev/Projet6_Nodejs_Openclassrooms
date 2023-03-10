@@ -1,5 +1,5 @@
 import  argon2 from 'argon2';
-import { logString } from './string.js';
+import { logString } from './../string.js';
 
 const { pwd_hash_error, pwd_verify_error } = logString;
 

@@ -1,9 +1,16 @@
 import { mongoModels } from './../../mongoDB/models.js';
-import { tokenManager } from './../../utils/jwt.js';
-import { hashManager } from './../../utils/pwd-hash.js';
-import { typeVerificator, regexVerificator } from '../../utils/object-tools/object-verifier.js';
-import { userTypeSchema } from '../../utils/object-tools/type-checker/index.js';
-import { logString } from '../../utils/string.js';
+import { tokenManager } from './../../utils/security/index.js';
+import { hashManager } from './../../utils/security/index.js';
+import { typeVerificator, regexVerificator } from './../../utils/object-tools/index.js';
+import { userTypeSchema } from './../../utils/object-tools/index.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API login end-point controller 
+ * @loginController is the only function
+ * it work with User models, hashManager and tokenManager
+ * for verify user exist, his password and send a token if all is good
+**/
 
 const { 
   api_bad_request,

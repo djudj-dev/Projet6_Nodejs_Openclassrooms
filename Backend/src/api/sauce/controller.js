@@ -1,8 +1,17 @@
 import { mongoModels } from './../../mongoDB/index.js';
-import { typeVerificator } from '../../utils/object-tools/object-verifier.js';
-import { idTypeSchema } from '../../utils/object-tools/type-checker/index.js';
-import { updateSauceFormat } from '../../utils/object-tools/update-sauce.js';
-import { logString } from '../../utils/string.js';
+import { typeVerificator, regexVerificator } from './../../utils/object-tools/index.js';
+import { idTypeSchema, sauceTypeSchema } from './../../utils/object-tools/index.js';
+import { updateSauceFormat } from './../../utils/object-tools/index.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API sauce end-point controllers
+ * @getSauceController return the sauce with the id in urlParams
+ * @deleteSauceController delete the sauce with the id in urlParams
+ * @putSauceController modify the sauce with the id in urlParams,
+ * that use the updateSauceFormat function for split the controller logic 
+ * all function use the Sauce model for DB interaction 
+**/
 
 const {
   api_unauthorized,
@@ -48,8 +57,12 @@ export const deleteSauceController = async (req, res) => {
 export const putSauceController = async (req, res) => {
   const isParamsValid = typeVerificator(idTypeSchema, req.params);
   const {_body , params: { id }, body } = req;
+  const test = regexVerificator(sauceTypeSchema, body);
   const updateSauceObj = _body 
-    ? body
+    ? typeVerificator(sauceTypeSchema, body)
+      && regexVerificator(sauceTypeSchema, body)
+      ? body
+      : false
     : updateSauceFormat(body);
 
   if (isParamsValid && updateSauceObj) {

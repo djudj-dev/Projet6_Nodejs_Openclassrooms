@@ -1,6 +1,14 @@
 import multer from 'multer';
-import { publicPaths } from '../../utils/public-path.js';
-import { logString } from '../../utils/string.js';
+import { publicPaths } from './../../utils/public-path.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API multer-images middleware controller 
+ * @uploadImg is the only function used
+ * multer & publicPaths for image storage
+ * use for download img on good path, set an unique name
+ * and send the imgUrl for the next controller in the request body  
+**/
 
 const { img_download } = logString;
 const { IMAGES } = publicPaths;

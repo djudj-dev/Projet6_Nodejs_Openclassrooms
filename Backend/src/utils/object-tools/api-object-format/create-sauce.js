@@ -1,12 +1,16 @@
-import { typeVerificator } from './object-verifier.js';
-import { sauceTypeSchema } from './type-checker/index.js';
+import { typeVerificator, regexVerificator } from './../index.js';
+import { sauceTypeSchema } from './../index.js';
 
 export const createSauceFormat = (sauceObject) => {
   const { imgUrl, sauce } = sauceObject;
   const sauceDataObject = typeof(sauce) === 'string'
     ? JSON.parse(sauce)
     : sauce;
-  const isDataValid = typeVerificator(sauceTypeSchema, sauceDataObject);
+  const isDataValid = typeVerificator(sauceTypeSchema, sauceDataObject)
+    ? regexVerificator(sauceTypeSchema, sauceDataObject)
+     ? true 
+     : false
+    : false;
   
   return isDataValid 
   ? {

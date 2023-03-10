@@ -1,6 +1,6 @@
 import { mongoConnection } from './connection.js';
-import { modelsClosures } from '../utils/models-closure.js';
-import { logString , consoleColors } from '../utils/string.js';
+import { modelsClosures } from './../utils/models-closure.js';
+import { logString , consoleColors } from './../utils/string.js';
 import * as schemas from './schema/index.js';
 
 const { db_model_create, db_error_model_creation } = logString;

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { logString } from './string.js';
+import { logString } from './../string.js';
 
 const { jwt_sign_error, jwt_verify_error } = logString;
 const { JWT_SECRET_KEY , JWT_EXPIRE_TIME } = process.env;

@@ -1,5 +1,5 @@
 import { createConnection } from 'mongoose';
-import { logString, consoleColors } from '../utils/string.js';
+import { logString, consoleColors } from './../utils/string.js';
 
 const { db_connection_success, db_connection_error } = logString;
 

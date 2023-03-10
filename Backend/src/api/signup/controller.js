@@ -1,8 +1,15 @@
 import { mongoModels } from './../../mongoDB/models.js';
-import { hashManager } from './../../utils/pwd-hash.js'
-import { typeVerificator, regexVerificator } from '../../utils/object-tools/object-verifier.js';
-import { userTypeSchema } from '../../utils/object-tools/type-checker/index.js';
-import { logString } from '../../utils/string.js';
+import { hashManager } from './../../utils/security/index.js'
+import { typeVerificator, regexVerificator } from './../../utils/object-tools/index.js';
+import { userTypeSchema } from './../../utils/object-tools/index.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API signup end-point
+ * @signupController is the only function 
+ * it work with User models and hashManager
+ * is verify data, hash the password and create in DB if all is good
+**/
 
 const {
   api_bad_request,

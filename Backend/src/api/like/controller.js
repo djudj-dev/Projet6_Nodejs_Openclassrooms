@@ -1,8 +1,14 @@
 import { mongoModels } from './../../mongoDB/models.js';
-import { likeReducer } from '../../utils/object-tools/like-reducer.js';
-import { typeVerificator } from '../../utils/object-tools/object-verifier.js';
-import { likeTypeSchema } from '../../utils/object-tools/type-checker/index.js';
-import { logString } from '../../utils/string.js';
+import { likeReducer } from './../../utils/object-tools/index';
+import { typeVerificator } from './../../utils/object-tools/index.js';
+import { likeTypeSchema } from './../../utils/object-tools/index.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API like end-point controller 
+ * @likeSauceController is the only function
+ * it work with his reducer for manage all cases
+**/
 
 const { api_not_found , liked_success } = logString;
 const { Sauce: { findOne, updateOne }} = mongoModels;

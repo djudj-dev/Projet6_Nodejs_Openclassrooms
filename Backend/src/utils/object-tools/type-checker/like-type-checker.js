@@ -3,6 +3,7 @@ export const likeTypeSchema = {
     type: 'number'
   },  
   userId: {
-    type: 'string'
+    type: 'string',
+    regex: /^[0-9a-z]{24}$/
   }, 
 }

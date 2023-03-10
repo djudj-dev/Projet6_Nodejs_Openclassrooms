@@ -1,6 +1,14 @@
 import { mongoModels } from './../../mongoDB/models.js';
-import { tokenManager } from './../../utils/jwt.js';
-import { logString } from '../../utils/string.js';
+import { tokenManager } from './../../utils/security/index.js';
+import { logString } from './../../utils/string.js';
+
+/**
+ * @file Manage the API auth middleware controller 
+ * @authMiddleware is the only function
+ * it work with User models,and tokenManager
+ * for verify token integrity and user exist on DB
+ * for all protected routes
+**/
 
 const { api_unauthorized, auth_request } = logString;
 const { User: { model }} = mongoModels;

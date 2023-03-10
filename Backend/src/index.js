@@ -18,4 +18,4 @@ app.use(apiRouter);
 app.listen(process.env.SERVER_PORT || 3000, async () => {
   const timerEnd = new Date;
   console.log(consoleColors.FgGreen, api_success_launch((timerEnd - timerStart) / 1000));
-})
+});
