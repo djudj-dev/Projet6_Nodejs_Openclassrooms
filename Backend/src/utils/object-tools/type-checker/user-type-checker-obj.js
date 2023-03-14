@@ -1,3 +1,9 @@
+/**
+ * @file export @userTypeSchema
+ * wich use for verify type and regex with :
+ * @typeVerificator & @regexVerificator
+**/
+
 export const userTypeSchema = {
   email: {
     type: 'string',

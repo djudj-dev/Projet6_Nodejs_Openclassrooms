@@ -1,6 +1,20 @@
 import  argon2 from 'argon2';
 import { logString } from './../string.js';
 
+/**
+ * @file manage the hash use for the api 
+ * @hashManager is the object to use for create and verify token
+ * 
+ * @hash
+ * @param { string } password is password to hash 
+ * @return { string | boolean }
+ * 
+ * @verify 
+ * @param { string } clearPassword is the password to verify
+ * @param { string } hashedPassword is the password hashed
+ * @return { boolean }
+**/
+
 const { pwd_hash_error, pwd_verify_error } = logString;
 
 export const hashManager = {

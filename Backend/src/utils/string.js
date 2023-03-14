@@ -1,3 +1,9 @@
+/**
+ * @file manage all the string use in the banckend code base
+ * @logString is the object with all the string use
+ * @consoleColors is use for change the console text color
+**/
+
 export const logString = {
 
   api_success_launch: (second) => (

@@ -6,10 +6,10 @@ import * as schemas from './schema/index.js';
 /**
  * @file manage all the DB models, collection creation 
  * @createModels create all the models need for the api 
- * @param { connection }; need to bee an mongoDB connection
- * @param { modelsClosures }; need to be an object with
+ * @param { object } connection need to bee an mongoDB connection
+ * @param {{ () => function, ...() => function }} modelsClosures need to be an object with
  * closure function that use the models for preformated action
- * @param { ...schemaObjects }; need to be an object with 
+ * @param { object } schemaObjects need to be an object with 
  * all the schema off the database needed
  * @return { object }; that will be used later by all the function 
  * that will need to use the db for manage specific models 

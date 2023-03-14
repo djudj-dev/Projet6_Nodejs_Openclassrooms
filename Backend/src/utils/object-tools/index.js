@@ -7,7 +7,7 @@ import {
   likeTypeSchema, 
   sauceTypeSchema,
   userTypeSchema
-} from './type-checker.js';
+} from './type-checker/index.js';
 
 export {  
   typeVerificator, 

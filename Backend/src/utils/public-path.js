@@ -1,6 +1,13 @@
 import fs from 'node:fs';
 import { logString, consoleColors } from './string.js';
 
+/**
+ * @file manage the object wich manage the public path for img etc..
+ * @getPublicPaths return all public path written in env
+ * @createPublicPath create public path folder if they don't exist
+ * and return the @publicPathObj with all routes of public paths
+**/
+
 const { public_path_create, public_path_allreadyExist } = logString;
 const { env: { PWD , ...env } } = process;
 const publicPathRegex = /^PUBLIC_/;

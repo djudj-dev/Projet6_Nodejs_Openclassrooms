@@ -1,5 +1,11 @@
 import { logString } from './string.js';
 
+/**
+ * @file manage the object of closure use for @createModels
+ * @modelsClosure contains all preformated function wich use 
+ * regularly in the API
+**/
+
 const {
   models_closures_success_create,
   models_closures_error_create,

@@ -1,3 +1,9 @@
+/**
+ * @file export @sauceTypeSchema
+ * wich use for verify type and regex with :
+ * @typeVerificator & @regexVerificator
+**/
+
 export const sauceTypeSchema = {
   userId: {
     type: 'string',

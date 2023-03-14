@@ -6,6 +6,11 @@ import { apiRouter } from './api/router.js';
 import { publicPaths } from './utils/public-path.js';
 import { logString, consoleColors } from './utils/string.js';
 
+/**
+ * @file is the entry point of code base
+ * @app use everything api need before listen 
+**/
+
 const { api_success_launch} = logString;
 const app = express();
 

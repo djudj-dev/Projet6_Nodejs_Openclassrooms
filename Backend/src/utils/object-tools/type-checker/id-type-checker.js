@@ -1,3 +1,9 @@
+/**
+ * @file export @idTypeSchema 
+ * wich use for verify type and regex with :
+ * @typeVerificator & @regexVerificator
+**/
+
 export const idTypeSchema = {
   id: {
     type : 'string',

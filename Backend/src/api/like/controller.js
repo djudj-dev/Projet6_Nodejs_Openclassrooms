@@ -1,5 +1,5 @@
 import { mongoModels } from './../../mongoDB/models.js';
-import { likeReducer } from './../../utils/object-tools/index';
+import { likeReducer } from './../../utils/object-tools/index.js';
 import { typeVerificator } from './../../utils/object-tools/index.js';
 import { likeTypeSchema } from './../../utils/object-tools/index.js';
 import { logString } from './../../utils/string.js';

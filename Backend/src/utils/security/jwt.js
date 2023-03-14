@@ -1,6 +1,19 @@
 import jwt from 'jsonwebtoken';
 import { logString } from './../string.js';
 
+/**
+ * @file manage the token use for the api 
+ * @tokenManager is the object to use for create and verify token
+ * 
+ * @create
+ * @param { any } payload is use for create th token 
+ * @return { string | boolean }
+ * 
+ * @verify 
+ * @param { string } token is the token to verify
+ * @return { boolean }
+**/
+
 const { jwt_sign_error, jwt_verify_error } = logString;
 const { JWT_SECRET_KEY , JWT_EXPIRE_TIME } = process.env;
 

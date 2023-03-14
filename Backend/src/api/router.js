@@ -10,12 +10,18 @@ import { likeSauceRouter } from './like/route.js';
  * @file Manage the router creation with all the routes object
  * @routerImplement use all the middleware & endPoints for 
  * implement the API router
- * @param { router }; Need to be an Express Router
- * @param { middlewares, endPoints }; 
- * needs to be two arrays of objects with :
- * - type
- * - route
- * - controller  
+ * @param { object: expressRouter } router Need to be an Express Router
+ * @param {
+ * middlewares: arrayOf {
+ *   type: string
+ *   route: string
+ *   controller: function
+ * }, 
+ * endPoints: arrayOf {
+ *   type: string
+ *   route: string
+ *   controller: function
+ * }}
 **/
 
 const router = Router();
