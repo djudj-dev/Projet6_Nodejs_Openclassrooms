@@ -43,9 +43,9 @@ export const deleteSauceController = async (req, res) => {
   const { params: { id }} = req;
 
   if (isParamsValid && id) {
-    const { status } = await deleteOne({_id: id});
+    const { status, data: { deletedCount } } = await deleteOne({_id: id});
 
-    if (status) {
+    if (status && deletedCount) {
 
       return res.send({message: deleted_succes});
     }
