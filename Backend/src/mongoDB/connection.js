@@ -7,6 +7,7 @@ import { logString, consoleColors } from './../utils/string.js';
  * that will need to use the db 
 **/
 
+process.env.NODE_ENV === 'production' && (console.log = function () {});
 const { db_connection_success, db_connection_error } = logString;
 
 const atlasConnectionCreator = () => {
