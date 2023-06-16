@@ -33,7 +33,7 @@ export const signupController = async (req, res) => {
 
       if (createUser.status) {
 
-        return res.send(signup_valid + email);
+        return res.status(201).send({ message: signup_valid + email });
       }
     }
     return res.status(409).send(signup_allready_exist);
